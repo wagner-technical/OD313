@@ -19,3 +19,40 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+#app {
+  display: flex;
+  flex-direction: row;
+  height: 98vh;
+  width: 100vw;
+}
+
+#sidebar-container {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+#menu-sidebar {
+  width: 100%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#map-container {
+  border: solid black 1px;
+  margin: 1px;
+  width: 75%;
+  /* height: 100%; */
+}
