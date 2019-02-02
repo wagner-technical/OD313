@@ -1,4 +1,3 @@
-
 /**
  * ACTION TYPES
  */
@@ -34,7 +33,7 @@ export default function(state = defaultMenu, action) {
         ...state,
         [action.town]: {
           selected: !state[action.town].selected,
-          roads: Object.keys(state[action.town].roads).reduce( (roads, road) => {
+          roads: Object.keys(state[action.town].roads).reduce((roads, road) => {
             roads[road] = {...state[action.town].roads[road]}
             return roads
           }, {})

@@ -5,18 +5,18 @@ import processUpload from '../utils/processUpload'
 
 class UploadFile extends React.Component {
   onDrop = (acceptedFiles, rejectedFiles) => {
-    if(!acceptedFiles) {
-      window.alert("check file and try again")
+    if (!acceptedFiles) {
+      window.alert('check file and try again')
     } else {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onload = () => {
         const fileAsBinaryString = reader.result
         processUpload(fileAsBinaryString)
-      };
-      reader.onabort = () => console.log('file reading was aborted');
-      reader.onerror = () => console.log('file reading has failed');
+      }
+      reader.onabort = () => console.log('file reading was aborted')
+      reader.onerror = () => console.log('file reading has failed')
 
-      reader.readAsBinaryString(acceptedFiles[0]);
+      reader.readAsBinaryString(acceptedFiles[0])
     }
   }
 
@@ -27,19 +27,21 @@ class UploadFile extends React.Component {
           return (
             <div
               {...getRootProps()}
-              className={classNames('dropzone', {'dropzone--isActive': isDragActive})}
+              className={classNames('dropzone', {
+                'dropzone--isActive': isDragActive
+              })}
             >
               <input {...getInputProps()} />
-              {
-                isDragActive ?
-                  <p>Drop files here...</p> :
-                  <p>Click to upload (or drag & drop)</p>
-              }
+              {isDragActive ? (
+                <p>Drop files here...</p>
+              ) : (
+                <p>Click to upload (or drag & drop)</p>
+              )}
             </div>
           )
         }}
       </Dropzone>
-    );
+    )
   }
 }
 

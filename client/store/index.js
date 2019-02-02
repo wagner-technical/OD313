@@ -14,7 +14,7 @@ const middleware = composeWithDevTools(
 
 const persistedState = loadState()
 const store = createStore(reducer, persistedState, middleware)
-store.subscribe( () => {
+store.subscribe(() => {
   saveState({
     poles: store.getState().poles,
     menu: store.getState().menu
