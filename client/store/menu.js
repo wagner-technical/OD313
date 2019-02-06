@@ -1,3 +1,6 @@
+import axios from 'axios'
+import store from './index'
+
 /**
  * ACTION TYPES
  */
@@ -18,6 +21,36 @@ export const loadMenu = menu => ({type: LOAD_MENU, menu})
 export const removeMenu = () => ({type: REMOVE_MENU})
 export const toggleTown = town => ({type: TOGGLE_TOWN, town})
 export const toggleRoad = (town, road) => ({type: TOGGLE_ROAD, town, road})
+
+export const generateOD313 = () => async dispatch => {
+  try {
+    const menu = store.getState().menu
+    const poles = store.getState().poles
+    const roads = Object.keys(menu).reduce( (roads, townName) => {
+      const town = menu[townName]
+      Object.keys(town.roads).forEach(roadName => {
+        const road = town.roads[roadName]
+        if (road.selected) {
+          road.flocs.forEach(floc => {
+            if (roads[roadName]) {
+              roads[roadName].poles[floc] = poles[floc]
+            } else {
+              roads[roadName] = {
+                poles: {
+                  [floc]: poles[floc]
+                }
+              }
+            }
+          })
+        }
+      })
+      return roads
+    }, {})
+    axios.post('/api/xlsx/OD313', roads)
+  } catch(e) {
+    console.error(e)
+  }
+}
 
 /**
  * REDUCER

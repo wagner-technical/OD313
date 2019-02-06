@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {toggleRoad, toggleTown} from '../store'
+import {toggleRoad, toggleTown, generateOD313} from '../store'
 
 class MenuSidebar extends React.Component {
   constructor(props) {
@@ -56,6 +56,9 @@ class MenuSidebar extends React.Component {
 
     return (
       <div id="menu-sidebar">
+        <button onClick={this.props.generateOD313}>
+          Generate OD313
+        </button>
         <h3>Towns:</h3>
         {townCheckboxes}
         <h4>Roads:</h4>
@@ -71,7 +74,8 @@ const mapState = state => ({
 
 const mapDispatch = {
   toggleRoad,
-  toggleTown
+  toggleTown,
+  generateOD313
 }
 
 export default connect(mapState, mapDispatch)(MenuSidebar)
