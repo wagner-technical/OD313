@@ -3,9 +3,9 @@ import React from 'react'
 import {Navbar, MenuSidebar} from './components'
 import Routes from './routes'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { 
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {
   faCheckSquare,
   faSquare,
   faSquareFull,
