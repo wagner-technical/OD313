@@ -26,7 +26,7 @@ export const generateOD313 = () => async dispatch => {
   try {
     const menu = store.getState().menu
     const poles = store.getState().poles
-    const roads = Object.keys(menu).reduce( (roads, townName) => {
+    const roads = Object.keys(menu).reduce((roads, townName) => {
       const town = menu[townName]
       Object.keys(town.roads).forEach(roadName => {
         const road = town.roads[roadName]
@@ -47,7 +47,7 @@ export const generateOD313 = () => async dispatch => {
       return roads
     }, {})
     axios.post('/api/xlsx/OD313', roads)
-  } catch(e) {
+  } catch (e) {
     console.error(e)
   }
 }

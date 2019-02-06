@@ -15,7 +15,7 @@ const MyMapComponent = compose(
   withGoogleMap
 )(props => (
   <GoogleMap defaultZoom={7} defaultCenter={{lat: 43.151068, lng: -75.66542}}>
-    {props.poles.length &&
+    {props.poles.length > 0 &&
       props.poles.map(pole => (
         <Marker
           key={pole.FLOC}
@@ -25,8 +25,6 @@ const MyMapComponent = compose(
           }}
         />
       ))}
-
-    {/* <Marker position={{lat: parseFloat(props.poles['9302-L0089-0447-0014-ED00001'].Latitude), lng: parseFloat(props.poles['9302-L0089-0447-0014-ED00001'].Longitude) }} /> */}
   </GoogleMap>
 ))
 
@@ -49,8 +47,6 @@ class MyFancyComponent extends React.PureComponent {
       },
       []
     )
-
-    console.log(activePoles)
 
     return <MyMapComponent poles={activePoles} />
   }
