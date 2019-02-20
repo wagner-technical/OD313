@@ -28,6 +28,7 @@ class MenuSidebar extends React.Component {
     const townCheckboxes = townNames.map(name => (
       <Checkbox
         name={name}
+        key={name}
         checked={menu[name].selected}
         onChange={this.handleTownToggle}
       />
@@ -38,13 +39,14 @@ class MenuSidebar extends React.Component {
         Object.keys(menu[town].roads).forEach(road => {
           checkboxes.push(
             <Checkbox
+              key={road}
               name={road}
               town={town}
               checked={menu[town].roads[road].selected}
               onChange={e => this.handleRoadToggle(e, town)}
             />
-          )}
-        )
+          )
+        })
       }
       return checkboxes
     }, [])
@@ -57,10 +59,9 @@ class MenuSidebar extends React.Component {
         <h4>Roads:</h4>
         {roadCheckboxes}
       </div>
-    )  
-  }  
+    )
+  }
 }
-    
 
 const mapState = state => ({
   menu: state.menu

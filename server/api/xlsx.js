@@ -138,8 +138,24 @@ router.post('/OD313', async (req, res, next) => {
 
     // template.Sheets['page 1']['B15'] = { v: pole.Town, t: 's', w: pole.Town }
 
-    XLSX.writeFile(template, 'server/xlsx/test.xlsx', wopts)
+    XLSX.writeFile(template, 'server/xlsx/OD313.xlsx', wopts)
+    res.status(200).end()
   } catch (err) {
     next(err)
+  }
+})
+
+
+router.get('/download', async (req, res, next) => {
+  try {
+    res.download('server/xlsx/OD313.xlsx', 'OD313.xlsx', err => {
+      if (err) {
+        console.error(err)
+      } else {
+        console.log('success')
+      }
+    })
+  } catch (e) {
+    next(e)
   }
 })

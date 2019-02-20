@@ -46,7 +46,8 @@ export const generateOD313 = () => async dispatch => {
       })
       return roads
     }, {})
-    axios.post('/api/xlsx/OD313', roads)
+    await axios.post('/api/xlsx/OD313', roads)
+    window.open('/api/xlsx/download')
   } catch (e) {
     console.error(e)
   }

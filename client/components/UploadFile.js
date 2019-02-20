@@ -25,7 +25,7 @@ class UploadFile extends React.Component {
       <Dropzone onDrop={this.onDrop}>
         {({getRootProps, getInputProps, isDragActive}) => {
           return (
-            <div
+            <div className='dropzone'
               {...getRootProps()}
               className={classNames('dropzone', {
                 'dropzone--isActive': isDragActive

@@ -33,6 +33,19 @@ form div {
   width: 25%;
 }
 
+.dropzone {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.dropzone:hover {
+  cursor: pointer;
+}
+.dropzone:active {
+  border: none;
+}
+
 .checkbox {
   display: flex;
   flex-direction: row;
@@ -94,6 +107,14 @@ form div {
   margin-left: 10px;
   display: flex;
   flex-direction: column;
+}
+#menu-sidebar button {
+  width: 90%;
+  height: 60px;
+  font-size: 18px;
+}
+#menu-sidebar button:hover {
+  cursor: pointer;
 }
 
 #map-container {

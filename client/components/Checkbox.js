@@ -4,10 +4,15 @@ const Checkbox = ({name, town, checked, onChange}) => {
   return (
     <div
       className="checkbox"
-      onClick={town ? () => onChange(name, town) : () => onChange(name)}
     >
-      <div className={`${checked ? 'checked' : 'unchecked'}`} />
-      <div className={`${checked ? 'name-checked' : 'name-unchecked'}`}>
+      <div 
+        className={`${checked ? 'checked' : 'unchecked'}`} 
+        onClick={town ? () => onChange(name, town) : () => onChange(name)}
+      />
+      <div 
+        className={`${checked ? 'name-checked' : 'name-unchecked'}`}
+        onClick={town ? () => onChange(name, town) : () => onChange(name)}
+      >
         {name}
       </div>
     </div>
