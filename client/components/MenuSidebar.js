@@ -47,9 +47,7 @@ class MenuSidebar extends React.Component {
 
     return (
       <div id="menu-sidebar">
-        <button onClick={this.props.generateOD313}>
-          Generate OD313
-        </button>
+        <button onClick={this.props.generateOD313}>Generate OD313</button>
         <h3>Towns:</h3>
         {townCheckboxes}
         <h4>Roads:</h4>
