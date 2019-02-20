@@ -33,6 +33,45 @@ form div {
   width: 25%;
 }
 
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  position: relative;
+}
+
+.checked {
+  background-color: black;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  border: solid 1px black;
+  margin-top: 1px;
+}
+.checked:hover {
+  cursor: pointer;
+}
+.unchecked:hover {
+  cursor: pointer;
+}
+.unchecked {
+  background-color: rgb(208, 208, 208);
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  margin-top: 1px;
+  border: solid 1px black;
+}
+.name-checked:hover {
+  cursor: pointer;
+}
+.name-unchecked {
+  color: grey;
+}
+.name-unchecked:hover {
+  cursor: pointer;
+}
+
 .column {
   display: flex;
   flex-direction: column;
@@ -41,6 +80,13 @@ form div {
 .row {
   display: flex;
   flex-direction: row;
+}
+
+.pointer-line {
+  height: 1px;
+  width: 30%;
+  margin-top: 6px;
+  border: solid 1px rgb(96, 96, 96);
 }
 
 #menu-sidebar {
