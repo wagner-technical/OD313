@@ -1,6 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {toggleRoad, toggleTown, getSelectedAmount, generateOD313} from '../store'
+import {
+  toggleRoad,
+  toggleTown,
+  getSelectedAmount,
+  generateOD313
+} from '../store'
 import {Checkbox} from './index'
 
 class MenuSidebar extends React.Component {
@@ -57,8 +62,7 @@ class MenuSidebar extends React.Component {
         const roads = menu[townName].roads
         Object.keys(roads).forEach(roadName => {
           const amountOfPoles = Object.keys(roads[roadName].flocs).length
-          if (roads[roadName].selected)
-            selectedAmount += amountOfPoles
+          if (roads[roadName].selected) selectedAmount += amountOfPoles
         })
       }
     })
@@ -67,17 +71,12 @@ class MenuSidebar extends React.Component {
 
     return (
       <div id="menu-sidebar">
-        <button 
-          onClick={this.props.generateOD313}
-          disabled={disableButton}
-        >
+        <button onClick={this.props.generateOD313} disabled={disableButton}>
           Generate OD313
         </button>
         <div>
           <h3>Towns:</h3>
-          <div>
-            Poles: {selectedAmount}
-          </div>
+          <div>Poles: {selectedAmount}</div>
         </div>
         {townCheckboxes}
         <h4>Roads:</h4>
