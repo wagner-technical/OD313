@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {
   toggleRoad,
   toggleTown,
-  getSelectedAmount,
   generateOD313
 } from '../store'
 import {Checkbox} from './index'
@@ -28,7 +27,7 @@ class MenuSidebar extends React.Component {
   }
 
   render() {
-    const {menu, getSelectedAmount} = this.props
+    const {menu} = this.props
     const townNames = Object.keys(menu)
     const townCheckboxes = townNames.map(name => (
       <Checkbox
@@ -93,7 +92,6 @@ const mapState = state => ({
 const mapDispatch = {
   toggleRoad,
   toggleTown,
-  getSelectedAmount,
   generateOD313
 }
 
