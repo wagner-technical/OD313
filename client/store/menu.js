@@ -28,22 +28,24 @@ export const generateOD313 = () => async dispatch => {
     const poles = store.getState().poles
     const roads = Object.keys(menu).reduce((roads, townName) => {
       const town = menu[townName]
-      Object.keys(town.roads).forEach(roadName => {
-        const road = town.roads[roadName]
-        if (road.selected) {
-          road.flocs.forEach(floc => {
-            if (roads[roadName]) {
-              roads[roadName].poles[floc] = poles[floc]
-            } else {
-              roads[roadName] = {
-                poles: {
-                  [floc]: poles[floc]
+      if (town.selected) {
+        Object.keys(town.roads).forEach(roadName => {
+          const road = town.roads[roadName]
+          if (road.selected) {
+            road.flocs.forEach(floc => {
+              if (roads[roadName]) {
+                roads[roadName].poles[floc] = poles[floc]
+              } else {
+                roads[roadName] = {
+                  poles: {
+                    [floc]: poles[floc]
+                  }
                 }
               }
-            }
-          })
-        }
-      })
+            })
+          }
+        })
+      }
       return roads
     }, {})
     await axios.post('/api/xlsx/OD313', roads)

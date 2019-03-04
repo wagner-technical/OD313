@@ -90,10 +90,14 @@ router.post('/OD313', async (req, res, next) => {
       FLOC: 'K'
     }
 
+    let polesAmount = 0
+
     Object.keys(roads).forEach(roadName => {
       const poles = roads[roadName].poles
       Object.keys(poles).forEach(floc => {
         const {Division: unused, County: unused2, ...pole} = poles[floc]
+
+        polesAmount++
 
         // set constants based on page #
         let keyValPairs, cellIndices
@@ -132,11 +136,11 @@ router.post('/OD313', async (req, res, next) => {
       })
     })
 
-    // const roadA = roads[ Object.keys(roads)[0] ]
-    // const pole = roadA.poles[ Object.keys(roadA.poles)[0] ]
-    // console.log(pole.Town)
-
-    // template.Sheets['page 1']['B15'] = { v: pole.Town, t: 's', w: pole.Town }
+    template.Sheets['page 1']['X6'] = {
+      v: polesAmount,
+      t: 's',
+      w: polesAmount
+    }
 
     XLSX.writeFile(template, 'server/xlsx/OD313.xlsx', wopts)
     res.status(200).end()

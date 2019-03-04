@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {toggleRoad, toggleTown, generateOD313} from '../store'
+import {toggleRoad, toggleTown, getSelectedAmount, generateOD313} from '../store'
 import {Checkbox} from './index'
 
 class MenuSidebar extends React.Component {
@@ -23,7 +23,7 @@ class MenuSidebar extends React.Component {
   }
 
   render() {
-    const {menu} = this.props
+    const {menu, getSelectedAmount} = this.props
     const townNames = Object.keys(menu)
     const townCheckboxes = townNames.map(name => (
       <Checkbox
@@ -51,10 +51,34 @@ class MenuSidebar extends React.Component {
       return checkboxes
     }, [])
 
+    let selectedAmount = 0
+    Object.keys(menu).forEach(townName => {
+      if (menu[townName].selected) {
+        const roads = menu[townName].roads
+        Object.keys(roads).forEach(roadName => {
+          const amountOfPoles = Object.keys(roads[roadName].flocs).length
+          if (roads[roadName].selected)
+            selectedAmount += amountOfPoles
+        })
+      }
+    })
+
+    const disableButton = !selectedAmount || selectedAmount > 150
+
     return (
       <div id="menu-sidebar">
-        <button onClick={this.props.generateOD313}>Generate OD313</button>
-        <h3>Towns:</h3>
+        <button 
+          onClick={this.props.generateOD313}
+          disabled={disableButton}
+        >
+          Generate OD313
+        </button>
+        <div>
+          <h3>Towns:</h3>
+          <div>
+            Poles: {selectedAmount}
+          </div>
+        </div>
         {townCheckboxes}
         <h4>Roads:</h4>
         {roadCheckboxes}
@@ -70,6 +94,7 @@ const mapState = state => ({
 const mapDispatch = {
   toggleRoad,
   toggleTown,
+  getSelectedAmount,
   generateOD313
 }
 
