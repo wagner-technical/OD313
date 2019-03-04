@@ -33,6 +33,19 @@ form div {
   width: 25%;
 }
 
+#menu-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-right: 10%;
+}
+
+.red {
+  color: red;
+}
+
 .dropzone {
   display: flex;
   justify-content: center;

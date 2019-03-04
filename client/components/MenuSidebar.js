@@ -73,9 +73,12 @@ class MenuSidebar extends React.Component {
         <button onClick={this.props.generateOD313} disabled={disableButton}>
           Generate OD313
         </button>
-        <div>
-          <h3>Towns:</h3>
-          <div>Poles: {selectedAmount}</div>
+        <div id='menu-header'>
+          <div style={{fontSize: 22}}>Towns:</div>
+          {selectedAmount 
+            ? <div className={selectedAmount > 150 && 'red'}>Poles: {selectedAmount}</div>
+            : <div></div>
+          }
         </div>
         {townCheckboxes}
         <h4>Roads:</h4>
